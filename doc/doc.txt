@@ -1,0 +1,12 @@
+Theramic es una implementació lliure del Theremin.
+
+Lliure en el sentit que s'han aporfitat conceptes pero no es fidedigne de la versió original i lliure també perque tot el programari generat està sote llicència lliure.
+
+Theremin neix com a regal. A la meva familia tenim la costum de fer l'anomanet "Bon Amic" una verisió també lliure del l'Amic invisible, amb la variant que si que saps qui fa el regal i que aquest ha de ser construit per qui el fa, no es pot comprar un regal ja elaborat.
+
+A data de 2012 el meu bon amic fou el meu oncle Guillem. El considerat artisa d'una gran família. Regalar alguna cosa manufacturada a l'artisa de la família no es facil, donat que el seu nivell es elevat, així doncs vaig decidir portar el regal al meu camp i fer una mescla de tècnica i art. La vesant artística en aquest cas es la música.
+
+En la meva interpretació lliure del theremin consider que te dues parts. Una primera es com s'obte la nota que s'estàtocant. S'ha considerat que la nota depen de la distància a la que es troba un objecte (la ma del músic) del sensir de proximitat. Quan mes aprop més agut, quan mes llunyà més greu.
+
+L'altre part de l'instrument es la generaió del sò. Theramic te dues maneres de generarlo, una es de forma analògica de la manera que més m'ha agradat. L'altre es treue notes pures en MIDI perque un altre element hi posi el so desitjat.
+
