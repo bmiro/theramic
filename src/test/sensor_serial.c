@@ -1,1 +1,0 @@
-/* Send sensor value to the serial port */

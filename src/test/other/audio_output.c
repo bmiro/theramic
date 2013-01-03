@@ -2,7 +2,6 @@
 /* Test to send values to USB using serial interface */
  
 #include "Arduino.h"
-#include "Tone.h"
 
 Tone tone;
 
