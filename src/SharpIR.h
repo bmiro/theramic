@@ -1,7 +1,9 @@
-#include <Arduino.h>
-
 #ifndef _sharp_ir_h
 #define _sharp_ir_h
+
+#include <Arduino.h>
+
+#define INVERT_TH 650
 
 class SharpIR
 {

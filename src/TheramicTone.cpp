@@ -1,21 +1,10 @@
 #include "TheramicTone.h"
 
 void TheramicTone::init() {
-  tone.begin(SOUND_OUTPUT);
+  _tone.begin(SOUND_OUTPUT);
+  _sharpIr.init(PIN_INSTRUMENT);
 
-  pinMode(PIN_LED_DO, OUTPUT);
-  pinMode(PIN_LED_RE, OUTPUT);
-  pinMode(PIN_LED_MI, OUTPUT); 
-  pinMode(PIN_LED_FA, OUTPUT);
-  pinMode(PIN_LED_SOL, OUTPUT);
-  pinMode(PIN_LED_LA, OUTPUT);
-  pinMode(PIN_LED_SI, OUTPUT);
-  pinMode(PIN_LED_DO_S, OUTPUT);
-  pinMode(PIN_LED_RE_S, OUTPUT);
-  pinMode(PIN_LED_FA_S, OUTPUT);
-  pinMode(PIN_LED_SOL_S, OUTPUT);
-  pinMode(PIN_LED_LA_S, OUTPUT);
-
+  /* Store values for better managment  */
   _leds[DO] = PIN_LED_DO;
   _leds[DO_S] = PIN_LED_DO_S;
   _leds[RE] = PIN_LED_RE;
@@ -29,32 +18,65 @@ void TheramicTone::init() {
   _leds[LA_S] = PIN_LED_LA_S;
   _leds[SI] = PIN_LED_SI;
 
+  /* Turn off all LED  */
+  for (int i = 0; i < LED_COUNT; i++) {
+    pinMode(_leds[i], OUTPUT);
+    digitalWrite(_leds[i], LOW);
+  }
+
 }
 
 int TheramicTone::distanceToNote(int d) {
-  //TODO
+  int note;
+
+  if (d < MIN_DIST) {
+    note = DO;
+  } else if (d > MAX_DIST) {
+    note = SI;
+  } else {
+    note = ((d - MIN_DIST) / NOTE_DIST) + 1;
+  }
+  Serial.print("note: ");
+  Serial.println(note);
+
+  return note;
 }
 
 int TheramicTone::beat() {
+  int raw;
   raw = analogRead(PIN_BEAT);
   return (raw > BEAT_TH) ? 1 : 0;
 }
 
 int TheramicTone::getNote() {
+  int d;
 
+  d = _sharpIr.getDistance();
+  Serial.print("Disntace value: ");
+  Serial.println(d);
+  return distanceToNote(d);
 }
 
-void TheramicTone::play(int note, int octave) {
-  _tone.play(_octaves[ocateve][note]);
-  for (int i; i < LED_COUNT; i++) {
+int TheramicTone::play(int octave, int note) {
+
+  if (octave == _current_octave && note == _current_note) {
+    /* Do not put any tone, its already playing */
+    return 0;
+  }
+
+  _current_octave = octave;
+  _current_note = note;
+  _tone.play(_octaves[octave][note]);
+  for (int i = 0; i < LED_COUNT; i++) {
     digitalWrite(_leds[i], LOW);
   }
   digitalWrite(_leds[note], HIGH);
 }
 
-void TheramicTone::rawPlay(int note) {
+int TheramicTone::rawPlay(int note) {
   _tone.play(note);
 }
+
 
 void TheramicTone::mute() {
   _tone.stop();
@@ -62,6 +84,6 @@ void TheramicTone::mute() {
 
 void TheramicTone::wait() {
   //TODO sleep until change
-
+  delay(100);
 }
 

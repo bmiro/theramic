@@ -1,19 +1,21 @@
 #include <Arduino.h>
 #include "TheramicTone.h"
 
-Theramic thrmc;
+TheramicTone thrmc;
 int octave;
+int note;
 
-void setup() {                
+void setup() {
+  Serial.begin(9600);              
   thrmc.init();
-  octave = 1;
+  octave = 3;
 }
 
 void loop() {
 
   if (thrmc.beat()) {
     note = thrmc.getNote();
-    thrmc.play(note, octave);      
+    thrmc.play(octave, note);      
   } else {
     thrmc.mute();
   }
