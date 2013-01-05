@@ -11,8 +11,8 @@
 
 
 /******** Hardware PINS *********/
-#define PIN_LED_DO     13  /* 0 is giving problems */
-#define PIN_LED_RE     1
+#define PIN_LED_DO     0 
+#define PIN_LED_RE     13  /* 1 is giving problems */
 #define PIN_LED_MI     2 
 #define PIN_LED_FA     3
 #define PIN_LED_SOL    4
@@ -57,7 +57,7 @@
 
 #define BEAT_TH 200
 
-#define MAX_DIST 600 /* in mm */
+#define MAX_DIST 580 /* in mm */
 #define MIN_DIST 100 /* in mm */
 #define NOTE_DIST ((MAX_DIST-MIN_DIST)/NOTE_COUNT) /* Distance for each note */
 

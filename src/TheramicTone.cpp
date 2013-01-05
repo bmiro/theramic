@@ -67,10 +67,20 @@ int TheramicTone::play(int octave, int note) {
   _current_octave = octave;
   _current_note = note;
   _tone.play(_octaves[octave][note]);
+//  for (int i = 0; i < LED_COUNT; i++) {
+//    digitalWrite(_leds[i], LOW);
+//  }
+//
+//  digitalWrite(_leds[note], HIGH);
+
   for (int i = 0; i < LED_COUNT; i++) {
-    digitalWrite(_leds[i], LOW);
+    if (i > note) {
+     digitalWrite(_leds[i], LOW);
+    } else {
+     digitalWrite(_leds[i], HIGH);
+    }
   }
-  digitalWrite(_leds[note], HIGH);
+
 }
 
 int TheramicTone::rawPlay(int note) {

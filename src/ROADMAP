@@ -1,0 +1,18 @@
+Mesura de respota com a resultat de 3 mesures
+Prints correctes per el port serie
+Calibrar distancies a valor de sensor
+Implementar selector de octava
+Implementar el wait a canvis per davall d'un llindar
+
+Ingeniosa forma de connectar n-algo leds emprant log2 n pins.
+per encendre de un en un
+
+   0 0 1 1 2 2 3 3
+0  - - >   >   > 
+0  - -   <   <   <
+1      - - >   >
+1      - -   <   <
+2          - - >
+2          - -   <
+3              - -
+3              - -
