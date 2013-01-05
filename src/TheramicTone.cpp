@@ -32,7 +32,7 @@ int TheramicTone::distanceToNote(int d) {
   if (d < MIN_DIST) {
     note = DO;
   } else if (d > MAX_DIST) {
-    note = SI;
+    note = NULL;
   } else {
     note = ((d - MIN_DIST) / NOTE_DIST) + 1;
   }
@@ -61,6 +61,11 @@ int TheramicTone::play(int octave, int note) {
 
   if (octave == _current_octave && note == _current_note) {
     /* Do not put any tone, its already playing */
+    return 0;
+  }
+  
+  if (note == NULL || octave == NULL) {
+    mute();
     return 0;
   }
 
