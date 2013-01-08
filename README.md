@@ -1,1 +1,3 @@
-Thanks to the Tone.h author and all of the autors of example code that I've take. As soon as posible I'll will put the credits.
+This is the v1 version of Theramic given as present with the Hardware to my uncle.
+
+Versions below will try to clean up the code, see master branch or next versions.
